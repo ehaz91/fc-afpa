@@ -1,0 +1,512 @@
+{% extends 'base.html.twig' %}
+{% block title %}classement{% endblock %}
+
+{% block body %}
+
+    {% block stylesheet %}
+        <!-- Style Blog -->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ asset('assets/css/classement.css')}}">
+        <!-- Responsive Blog -->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ asset('assets/css/responsive/classement_responsive.css')}}">
+			
+
+    {% endblock %}
+    <body class="tm-isblog tt-players-page">
+
+        <div class="over-wrap">
+
+            <div class="tm-top-a-box tm-full-width tm-box-bg-1 ">
+                <div class="uk-container uk-container-center">
+                    <section
+                        id="tm-top-a"
+                        class="tm-top-a uk-grid uk-grid-collapse"
+                        data-uk-grid-match="{target:'> div > .uk-panel'}"
+                        data-uk-grid-margin="">
+
+                        <div class="uk-width-1-1 uk-row-first">
+                            <div class="uk-panel">
+                                <div
+                                    class="uk-cover-background uk-position-relative head-wrap"
+                                    style="height: 550px; background-image: url({{ asset('assets/images/others/classement_fond1.png')}});">
+                                    <img
+                                        class="uk-invisible"
+                                        src="{{ asset('assets/images/others/news_fond9.jpg')}}"
+                                        alt=""
+                                        height="600">
+                                    <div class="uk-position-cover uk-flex uk-flex-center head-title">
+                                        <div class="row">
+                                            <div class="col text-center" style="">
+                                                <div class="home_text">Le
+                                                    <span>Classement</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <div class="uk-container uk-container-center alt">
+                <ul class="uk-breadcrumb">
+                    <li>Classement
+                    </li>
+                </ul>
+            </div>
+
+            <div class="classement">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-9">
+
+                            <main id="tm-content" class="tm-content">
+
+                                <div class="list-players-wrapper">
+
+                                    <div class="list-players-wrap" id="boundary">
+
+                                        <div class="uk-container uk-container-center alt">
+                                            <div class="match-list-wrap" style="margin-top:30px;margin-bottom:40px;">
+
+                                                <div class="match-list-item">
+                                                    <div class="date">
+                                                        1
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a>
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/logo_psg.png')}}"
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="team-name">
+                                                        ZVC United Beverlo
+                                                    </div>
+                                                    <div class="team-name" style='float:right;'>
+                                                        65
+                                                    </div>
+                                                </div>
+                                                <div class="match-list-item">
+                                                    <div class="date">
+                                                        2
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a>
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/logo_afpa.png')}}"
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="team-name">
+                                                        ZVC United Beverlo
+                                                    </div>
+                                                    <div class="team-name" style='float:right;'>
+                                                        62
+                                                    </div>
+                                                </div>
+                                                <div class="match-list-item">
+                                                    <div class="date">
+                                                        3
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a>
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/logo_toulouse.png')}}"
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="team-name">
+                                                        Toulouse
+                                                    </div>
+                                                    <div class="team-name" style='float:right;'>
+                                                        49
+                                                    </div>
+                                                </div>
+                                                <div class="match-list-item">
+                                                    <div class="date">
+                                                        4
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a>
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/logo_strasbourg.png')}}"
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="team-name">
+                                                        Strasbourg
+                                                    </div>
+                                                    <div class="team-name" style='float:right;'>
+                                                        48
+                                                    </div>
+                                                </div>
+                                                <div class="match-list-item">
+                                                    <div class="date">
+                                                        5
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a>
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/logo_saint_etienne.png')}}"
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="team-name">
+                                                        Saint-Etienne
+                                                    </div>
+                                                    <div class="team-name" style='float:right;'>
+                                                        46
+                                                    </div>
+                                                </div>
+                                                <div class="match-list-item">
+                                                    <div class="date">
+                                                        6
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a>
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/logo_rennes.png')}}"
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="team-name">
+                                                        Rennes
+                                                    </div>
+                                                    <div class="team-name" style='float:right;'>
+                                                        45
+                                                    </div>
+                                                </div>
+                                                <div class="match-list-item">
+                                                    <div class="date">
+                                                        7
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a>
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/logo_reims.png')}}"
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="team-name">
+                                                        Reims
+                                                    </div>
+                                                    <div class="team-name" style='float:right;'>
+                                                        44
+                                                    </div>
+                                                </div>
+                                                <div class="match-list-item">
+                                                    <div class="date">
+                                                        8
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a>
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/logo_om.png')}}"
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="team-name">
+                                                        Marseille
+                                                    </div>
+                                                    <div class="team-name" style='float:right;'>
+                                                        43
+                                                    </div>
+                                                </div>
+                                                <div class="match-list-item">
+                                                    <div class="date">
+                                                        9
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a>
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/logo_OL.png')}}"
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="team-name">
+                                                        Lyon
+                                                    </div>
+                                                    <div class="team-name" style='float:right;'>
+                                                        42
+                                                    </div>
+                                                </div>
+                                                <div class="match-list-item">
+                                                    <div class="date">
+                                                        10
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a>
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/logo_ogcn.png')}}"
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="team-name">
+                                                        NIce
+                                                    </div>
+                                                    <div class="team-name" style='float:right;'>
+                                                        39
+                                                    </div>
+                                                </div>
+                                                <div class="match-list-item">
+                                                    <div class="date">
+                                                        11
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a>
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/logo_nimes.png')}}"
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="team-name">
+                                                        NIMES
+                                                    </div>
+                                                    <div class="team-name" style='float:right;'>
+                                                        37
+                                                    </div>
+                                                </div>
+                                                <div class="match-list-item">
+                                                    <div class="date">
+                                                        12
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a>
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/logo_nantes.png')}}"
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="team-name">
+                                                        NANTES
+                                                    </div>
+                                                    <div class="team-name" style='float:right;'>
+                                                        36
+                                                    </div>
+                                                </div>
+                                                <div class="match-list-item">
+                                                    <div class="date">
+                                                        13
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a>
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/logo_monaco.png')}}"
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="team-name">
+                                                        MONACO
+                                                    </div>
+                                                    <div class="team-name" style='float:right;'>
+                                                        33
+                                                    </div>
+                                                </div>
+                                                <div class="match-list-item">
+                                                    <div class="date">
+                                                        14
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a>
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/logo_mhsc.png')}}"
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="team-name">
+                                                        MONTPELLIER
+                                                    </div>
+                                                    <div class="team-name" style='float:right;'>
+                                                        31
+                                                    </div>
+                                                </div>
+                                                <div class="match-list-item">
+                                                    <div class="date">
+                                                        15
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a>
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/logo_losc.png')}}"
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="team-name">
+                                                        LOSC
+                                                    </div>
+                                                    <div class="team-name" style='float:right;'>
+                                                        30
+                                                    </div>
+                                                </div>
+                                                <div class="match-list-item">
+                                                    <div class="date">
+                                                        16
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a>
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/logo_dijon.png')}}"
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="team-name">
+                                                        DIJON
+                                                    </div>
+                                                    <div class="team-name" style='float:right;'>
+                                                        28
+                                                    </div>
+                                                </div>
+                                                <div class="match-list-item">
+                                                    <div class="date">
+                                                        17
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a>
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/logo_caen.png')}}"
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="team-name">
+                                                        CAEN
+                                                    </div>
+                                                    <div class="team-name" style='float:right;'>
+                                                        26
+                                                    </div>
+                                                </div>
+                                                <div class="match-list-item">
+                                                    <div class="date">
+                                                        18
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a>
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/logo_bordeaux.png')}}"
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="team-name">
+                                                        BORDEAUX
+                                                    </div>
+                                                    <div class="team-name" style='float:right;'>
+                                                        25
+                                                    </div>
+                                                </div>
+                                                <div class="match-list-item">
+                                                    <div class="date">
+                                                        19
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a>
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/logo_angers.png')}}"
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="team-name">
+                                                        ANGERS
+                                                    </div>
+                                                    <div class="team-name" style='float:right;'>
+                                                        22
+                                                    </div>
+                                                </div>
+                                                <div class="match-list-item">
+                                                    <div class="date">
+                                                        20
+                                                    </div>
+                                                    <div class="logo">
+                                                        <a>
+                                                            <img
+                                                                src="{{ asset('assets/images/logos_clubs/logo_amiens.png')}}"
+                                                                class="img-polaroid"></a>
+                                                    </div>
+                                                    <div class="team-name">
+                                                        AMIENS
+                                                    </div>
+                                                    <div class="team-name" style='float:right;'>
+                                                        20
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </main>
+
+                        </div>
+
+                        <!-- Sidebar -->
+                        <div class="col-lg-3 sidebar_col">
+                            <div class="sidebar">
+                                <div class="next_games">
+                                  
+                                    
+                                    <!-- Prochian Matchs -->
+                                    <div class="next_games_container text-center">
+                                      <div class="sidebar_title_container">
+                                        <div class="sidebar_title">
+                                            <h3>Prochains Matchs</h3>
+                                        </div>                                       
+                                    </div>
+                                       {% for NextFourMatchs in NextFourMatchs %}
+                                        <ul>
+                                            <li>
+
+                                                <div
+                                                    class="next_games_teams d-flex flex-row align-items-start justify-content-start">
+                                                    <div
+                                                        class="d-flex flex-xl-row flex-lg-column flex-row align-items-xl-center align-items-lg-start align-items-center justify-content-start">
+                                                        <div class="team_logo">
+                                                            <a href="team.html"><img src="{{ asset('assets/images/logos_clubs/' ~ NextFourMatchs.LOGO)}}" alt=""></a>
+                                                        </div>
+                                                        <div class="team_name text-left">
+                                                            <a href="team.html">{{ NextFourMatchs.NOM_EQUIPE }}</a>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="d-flex flex-xl-row flex-lg-column flex-row align-items-xl-center align-items-lg-end align-items-center justify-content-end">
+                                                        <div class="team_name text-right order-xl-1 order-lg-2 order-1">
+                                                            <a href="team.html">{{ NextFourMatchs.EQUIPE_EXTERIEUR }}</a>
+                                                        </div>
+                                                        <div class="team_logo order-xl-2 order-lg-1 order-2">
+                                                            <a href="team.html"><img src="{{ asset('assets/images/logos_clubs/' ~ NextFourMatchs.LOGO_EXTERIEUR)}}" alt=""></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="next_games_date">
+                                                    <a href="#">{{ NextFourMatchs.DATE_MATCHS | date('F d, Y') }}</a>
+                                                </div>
+                                            </li>                                        
+                                        </ul>
+                                        {% endfor %}
+                                    </div>
+                                  
+
+                                    <!-- Latest Posts -->
+                                    <div class="latest_posts">
+                                        <div class="sidebar_title_container">
+                                            <div class="sidebar_title">
+                                                <h3>Dernières News</h3>
+                                            </div>
+                                        </div>
+                                        <div class="latest_posts_container">
+
+                                            <!-- Latest_post -->
+                                            {% for new in news %}
+                                            <div
+                                                class="latest_post d-flex flex-row align-items-start justify-content-start">
+                                                <div class="latest_post_image">
+                                                     <img class="img-news-classement" src="{{ asset('assets/images/uploads/' ~ new.imageNews)}}" alt="">
+                                                </div>
+                                                <div class="latest_post_content">
+                                                    <div class="latest_post_date">
+                                                        {{ new.createdAtNews | date('d/m/Y') }}
+                                                    </div>
+                                                    <div class="latest_post_title">
+                                                        <a href="{{ path('news')}}">{{ new.titreNews }}</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+{% endblock %}

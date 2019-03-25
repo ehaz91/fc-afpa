@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reset Password!{% endblock %}
+
+{% block stylesheets %}
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="{{ asset('assets/css/registration.css')}}"
+{% endblock %}
+       
+{% block body %}
+
+    <body>
+        
+			<div class="inner">
+                <div class="image-holder">
+                     <img src="{{ asset('assets/images/others/inscription_fond3.png')}}" alt="">
+                </div>
+                        
+                        {{form_start(form)}}
+                        <h3>AJOUTER UNE NEWS</h3>
+                        <div class="form-wrapper margin-add-news">                            
+                            <div>
+                                Titre
+                            </div>
+                            {{form_widget(form.titreNews, {'attr': {'class': 'input form-control form-forget-password'}}) }}
+                        </div>
+                          <div class="form-wrapper margin-add-news">                            
+                            <div>
+                                 Description
+                            </div>
+                            {{form_widget(form.descriptionNews, {'attr': {'class': 'input form-control form-forget-password'}}) }}
+                        </div>
+                        <div class="form-wrapper margin-add-news">                            
+                            <div>
+                                 Texte
+                            </div>
+                            {{form_widget(form.texteNews, {'attr': {'class': 'input form-control form-forget-password form-forget-password'}}) }}
+                        </div>
+                         <div class="form-wrapper margin-add-news">                            
+                            <div>
+                                 Image
+                            </div>
+                            {{form_widget(form.imageNews, {'attr': {'class': 'input form-control form-forget-password form-add-news'}}) }}
+                        </div>
+                            <button class="btn btn-primary btn-no-hover">Poster</button>
+                        {{form_end(form)}}            
+			</div>
+		
+    </body>
+{% endblock %}

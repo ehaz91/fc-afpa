@@ -1,0 +1,35 @@
+easy_admin:
+  entities:
+      Matchs:
+        class: App\Entity\Matchs
+        edit:
+          fields:
+            - {property: 'dateMatchs', label: 'Date du match'}
+            - {property: 'titreMatch', label: 'Descriptif Match'}
+            - {property: 'resumeMatchs', label: 'Résumé du match'}
+            - {property: 'scoreEquipe1', label: 'Score domicile'}
+            - {property: 'scoreEquipe2', label: 'Score extérieur'}
+            - {property: 'idEquipe', label: 'Équipe domicile'}
+            - {property: 'idEquipeEquipes', label: 'Équipe extérieur'}
+            - {property: 'idJournee', label: 'Journée'}
+        list:
+          fields:
+            - {property: 'idMatchs', label: 'ID du match'}
+            - {property: 'dateMatchs', label: 'Date du match', format: 'd/m/Y à H:i:s'}
+            - {property: 'titreMatch', label: 'Descriptif Match'}
+            - {property: 'resumeMatchs', label: 'Résumé du match'}
+            - {property: 'scoreEquipe1', label: 'Score domicile'}
+            - {property: 'scoreEquipe2', label: 'Score extérieur'}
+            - {property: 'idEquipe', label: 'Équipe domicile'}
+            - {property: 'idEquipeEquipes', label: 'Équipe extérieur'}
+            - {property: 'idJournee', label: 'Journée'}
+        new:
+          fields:
+            - {property: 'dateMatchs', label: 'Date du match'}
+            - {property: 'titreMatch', label: 'Descriptif Match'}
+            - {property: 'resumeMatchs', label: 'Résumé du match'}
+            - {property: 'scoreEquipe1', label: 'Score domicile'}
+            - {property: 'scoreEquipe2', label: 'Score extérieur'}
+            - {property: 'idEquipe', label: 'Équipe domicile'}
+            - {property: 'idEquipeEquipes', label: 'Équipe extérieur'}
+            - {property: 'idJournee', label: 'Journée'}

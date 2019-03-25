@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>
+            {% block title %}FC AFPA!{% endblock %}
+        </title>
+
+        <!-- Bootstrap -->
+
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css')}}">
+
+        <!-- Font-Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+        <!-- Styles CSS -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/home.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/OwlCarousel2-2.3.4/owl.carousel.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/OwlCarousel2-2.3.4/owl.theme.default.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/OwlCarousel2-2.3.4/animate.css')}}">
+
+        <!-- Responsive Home -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive/responsive-me.css')}}">
+
+        <!-- Java registration -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive/responsive-me.css')}}">
+
+        {% block stylesheets %}{% endblock %}
+
+    </head>
+
+    <body>
+
+        <!-- Header -->
+        <div class="big_container">
+
+            <header>
+                {% if not app.user%}
+                    <div class="d-flex">
+                        <div>
+                            <a class="register btn btn-primary btn-no-hover" href="{{path('inscription')}}">
+                                INSCRIPTION
+                            </a>
+                        </div>
+                        <div>
+                            <a class="register btn btn-primary btn-no-hover" href="{{path('connexion')}}">
+                                CONNEXION
+                            </a>
+                        </div>
+                {% else %}
+                        <div class="d-flex">
+                            <div class="dropdown">
+                                <button class="dropbtn">Mon Profil</button>
+                                <div class="dropdown-content">
+                                    <a href="{{path('deconnexion')}}">Deconnexion</a>
+                                    <a href="{{path('account_password')}}">Changer de mot de passe</a>
+                                </div>
+                            </div>
+
+                {% endif %}
+
+                        <div class="container d-flex">
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="main_nav_container_outer d-flex flex-row align-items-end ">
+                                        <nav class="main_nav">
+                                            <div class="main_nav_container d-flex flex-row ">
+                                                <div>
+                                                    <ul class="d-flex flex-row align-items-start justify-content-end">
+                                                        <li>
+                                                            <a href="{{path('home')}}">Accueil</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="{{path('about')}}">Le Club</a>
+                                                        </li>
+                                                        <li>
+                                                            <a
+                                                                class="{% if current_menu is defined and current_menu == 'news' %}active{% endif %}"
+                                                                href="{{ path('news') }}">News</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="logo_container">
+                                                    <div><img
+                                                        style="margin-top: 50px;"
+                                                        src="{{ asset('assets/images/logos_clubs/logo_afpa.png')}}"
+                                                        alt=""></div>
+                                                </div>
+                                                <div>
+                                                    <ul class="d-flex flex-row">
+                                                        <li>
+                                                            <a href="{{path('calendrier')}}">Calendrier</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="{{path('classement')}}">Classement</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="{{path('contact')}}">Contact</a>
+                                                        </li>
+                                                    </ul>
+
+                                                </div>
+                                            </div>
+
+                                        </nav>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="hamburger">
+                                <i class="fas fa-bars"></i>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </header>
+
+                <!-- Fin Header -->
+
+                <!-- Body-Page -->
+
+                {% block body %}{% endblock %}
+
+                <!-- Fin Body-Page -->
+
+                <!-- Début Footer -->
+
+                <footer id="tm-footer" class="tm-footer background-blue">
+
+                    <div class="container">
+                        <div class="Subscribe-newsletter align-text">
+                            <h3>Inscrivez-vous à notre newsletter</h3>
+                        </div>
+                        <div class="form-email button-email align-text">
+                            <form action="" method="POST">
+                                <div class="form-group">
+                                    <input
+                                        type="text"
+                                        name="username"
+                                        class="form-control"
+                                        placeholder="Entrez votre adresse email pour vous inscrire"/>
+                                </div>
+                                <div class="border-test">
+                                    <button type="submit" class="btn btn-primary btn-no-hover">M'inscrire</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="sponsors">
+                            <div class="sponsors1 d-flex">
+                                <div class="title-sponsors">
+                                    PARTENAIRES OFFICIELS :
+                                </div>
+                                {{render('sponsors')}}
+                            </div>
+
+                            <div class="footer-wrap">
+                                <div class="copyrights">Copyright
+                                    <a href="https://www.afpa-formation-developpeur.be">AFPA Formation Developpeur Web et Web Mobile</a>
+                                    2019. Tous droits réservés.</div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </footer>
+
+                    <!-- Fin Footer -->
+
+                    <!-- CODE JS -->
+
+                    <script
+                        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                        crossorigin="anonymous"></script>
+                    <script
+                        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+                        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+                        crossorigin="anonymous"></script>
+                    <script src="{{ asset('assets/plugins/scrollmagic/ScrollMagic.min.js')}}"></script>
+                    <script src="{{ asset('assets/plugins/OwlCarousel2-2.3.4/owl.carousel.js')}}"></script>
+                    <script src="{{ asset('assets/js/custom.js')}}"></script>
+
+                    <script src="{{ asset('assets/js/bootstrap.min.js')}}"></script>
+                    <script src="{{ asset('assets/plugins/greensock/TweenMax.min.js')}}"></script>
+                    <script src="{{ asset('assets/plugins/greensock/TimelineMax.min.js')}}"></script>
+                    <script src="{{ asset('assets/plugins/greensock/animation.gsap.min.js')}}"></script>
+                    <script src="{{ asset('assets/plugins/greensock/ScrollToPlugin.min.js')}}"></script>
+
+                    <script src="{{ asset('assets/plugins/progressbar/progressbar.min.js')}}"></script>
+                    <script src="{{ asset('assets/plugins/parallax-js-master/parallax.min.js')}}"></script>
+                    <script src="{{ asset('assets/js/about.js')}}"></script>
+                    <script src="{{ asset('assets/js/registration.js')}}"></script>
+                    <script>
+                        $('#exampleModal').on('show.bs.modal', function (event) {
+                            var button = $(event.relatedTarget) // Button that triggered the modal
+                            modal
+                                .find('.modal-title')
+                                .text('New message to ' + recipient)
+                            modal
+                                .find('.modal-body input')
+                                .val(recipient)
+                        })
+                    </script>
+
+                    {% block javascripts %}{% endblock %}
+                    <!-- FIN CODE JS -->
+
+                </div>
+            </body>
+        </html>

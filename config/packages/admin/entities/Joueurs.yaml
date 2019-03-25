@@ -1,0 +1,4 @@
+easy_admin:
+  entities:
+      Matchs:
+        class: App\Entity\JoueursEquipe

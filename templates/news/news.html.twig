@@ -1,0 +1,185 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}News{% endblock %}
+
+{% block body %}
+
+{% block stylesheet %}
+<!-- Style Blog --> 
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/news.css')}}">
+<!-- Responsive Blog -->  
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive/news_responsive.css')}}">
+
+{% endblock %}
+
+<div class="super_container">
+ {% for message in app.flashes('notice') %}
+                <div class="alert alert-success alert-success-homepage" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+	
+
+	<!-- Home -->
+
+	<div class="home d-flex flex-column align-items-start justify-content-end">
+			<div class="background_image" style="background-image:url({{ asset('assets/images/others/news_fond9.jpg')}}); height: 600px;"> <div class="container">
+			<div class="row">
+				<div class="col text-center" style="">
+					<div class="home_text">Les <span>News</span></div>
+				</div>
+			</div>
+		</div></div>
+		
+	</div>
+	
+	<div class="uk-container uk-container-center alt">
+            <ul class="uk-breadcrumb">
+                <li>News
+                </li>
+            </ul>
+        </div>
+
+	<!-- Blog -->
+
+	<div class="blog">
+		<div class="container">
+			<div class="row">
+				
+				<!-- Blog Posts -->
+				<div class="col-lg-9">
+					<div class="blog_posts">
+
+					{% for new in news %}
+						
+						<!-- Blog Post -->
+						<div class="blog_post">
+							<div class="blog_post_image">
+								<img class="min-width"src="{{ asset('assets/images/uploads/' ~ new.imageNews)}}" alt="">
+								<div class="blog_post_date">
+								
+										<div class="d-flex upper-green 	flex-column align-items-center justify-content-center">
+											<div>{{ new.createdAtNews | date('d') }}</div>
+											<div>{{ new.createdAtNews | date('M') }}</div>
+											<div>{{ new.createdAtNews | date('Y') }}</div>
+										</div>
+									
+								</div>
+							</div>
+							<div class="blog_post_content">
+								<div class="tags">
+									<ul class="d-flex flex-row align-items-start justify-content-start flex-wrap">
+										<li class="upper-green">{{ new.titreNews }}</li>
+									</ul>
+								</div>
+								<div class="blog_post_title">{{ new.descriptionNews }}</div>
+								<div class="blog_post_text">
+									<p>{{ new.texteNews }}</p>
+								</div>
+							</div>
+						</div>
+
+					{% endfor %}
+
+					</div>
+				</div>
+
+				<!-- Sidebar -->
+				<div class="col-lg-3 sidebar_col">
+					<div class="sidebar">
+						<div class="latest_games">
+							<div class="sidebar_title_container">
+								<div class="sidebar_title"><h3>Dernier Matchs</h3></div>
+								<div class="sidebar_subtitle">Résultats</div>
+							</div>
+
+							<!-- Latest Games -->
+							<div class="latest_games_container text-center">
+								<ul>
+									<li>
+										<div class="latest_games_score">0 : 3</div>
+										<div class="latest_games_teams d-flex flex-row align-items-start justify-content-start">
+											<div class="d-flex flex-xl-row flex-lg-column flex-row align-items-xl-center align-items-lg-start align-items-center justify-content-start">
+												<div class="team_logo"><a href="team.html"><img src="{{ asset('assets/images/logos_clubs/logo_afpa.png')}}" alt=""></a></div>
+												<div class="team_name text-left"><a href="team.html">FC AFPA</a></div>
+											</div>
+											<div class="d-flex flex-xl-row flex-lg-column flex-row align-items-xl-center align-items-lg-end align-items-center justify-content-end">
+												<div class="team_name text-right order-xl-1 order-lg-2 order-1"><a href="team.html">OL</a></div>
+												<div class="team_logo order-xl-2 order-lg-1 order-2"><a href="team.html"><img src="{{ asset('assets/images/logos_clubs/logo_OL.png')}}" alt=""></a></div>
+											</div>
+										</div>
+										<div class="latest_games_date"><a href="#">20 Février 2019</a></div>
+									</li>
+									<li>
+										<div class="latest_games_score">0 : 1</div>
+										<div class="latest_games_teams d-flex flex-row align-items-start justify-content-start">
+											<div class="d-flex flex-xl-row flex-lg-column flex-row align-items-xl-center align-items-lg-start align-items-center justify-content-start">
+												<div class="team_logo"><a href="team.html"><img src="{{ asset('assets/images/logos_clubs/logo_psg.png')}}" alt=""></a></div>
+												<div class="team_name text-left"><a href="team.html">OGCNice</a></div>
+											</div>
+											<div class="d-flex flex-xl-row flex-lg-column flex-row align-items-xl-center align-items-lg-end align-items-center justify-content-end">
+												<div class="team_name text-right order-xl-1 order-lg-2 order-1"><a href="team.html">FC AFPA</a></div>
+												<div class="team_logo order-xl-2 order-lg-1 order-2"><a href="team.html"><img src="{{ asset('assets/images/logos_clubs/logo_afpa.png')}}" alt=""></a></div>
+											</div>
+										</div>
+										<div class="latest_games_date"><a href="#">11 Février 2019</a></div>
+									</li>
+									<li>
+										<div class="latest_games_score">3 : 2</div>
+										<div class="latest_games_teams d-flex flex-row align-items-start justify-content-start">
+											<div class="d-flex flex-xl-row flex-lg-column flex-row align-items-xl-center align-items-lg-start align-items-center justify-content-start">
+												<div class="team_logo"><a href="team.html"><img src="{{ asset('assets/images/logos_clubs/logo_afpa.png')}}" alt=""></a></div>
+												<div class="team_name text-left"><a href="team.html">FC AFPA</a></div>
+											</div>
+											<div class="d-flex flex-xl-row flex-lg-column flex-row align-items-xl-center align-items-lg-end align-items-center justify-content-end">
+												<div class="team_name text-right order-xl-1 order-lg-2 order-1"><a href="team.html">Borussia Dortmund</a></div>
+												<div class="team_logo order-xl-2 order-lg-1 order-2"><a href="team.html"><img src="{{ asset('assets/images/logos_clubs/logo_dortmund.png')}}" alt=""></a></div>
+											</div>
+										</div>
+										<div class="latest_games_date"><a href="#">4 Février 2019</a></div>
+									</li>
+									<li>
+										<div class="latest_games_score">2 : 1</div>
+										<div class="latest_games_teams d-flex flex-row align-items-start justify-content-start">
+											<div class="d-flex flex-xl-row flex-lg-column flex-row align-items-xl-center align-items-lg-start align-items-center justify-content-start">
+												<div class="team_logo"><a href="team.html"><img src="{{ asset('assets/images/logos_clubs/logo_nantes.png')}}" alt=""></a></div>
+												<div class="team_name text-left"><a href="team.html">Nantes</a></div>
+											</div>
+											<div class="d-flex flex-xl-row flex-lg-column flex-row align-items-xl-center align-items-lg-end align-items-center justify-content-end">
+												<div class="team_name text-right order-xl-1 order-lg-2 order-1"><a href="team.html">FC AFPA</a></div>
+												<div class="team_logo order-xl-2 order-lg-1 order-2"><a href="team.html"><img src="{{ asset('assets/images/logos_clubs/logo_afpa.png')}}" alt=""></a></div>
+											</div>
+										</div>
+										<div class="latest_games_date"><a href="#">28 Janvier 2019</a></div>
+									</li>
+								</ul>
+							</div>
+
+							<!-- Tickets -->
+							<div class="tickets">
+									<div class="background_image" style="background-image:url({{ asset('assets/images/others/news_tribunes.jpg)')}}"></div>
+								<div class="tickets_content text-center">
+									<div class="tickets_title">Venez nous encourager</div>															
+									<div class=" tickets_button results_button"><a href="#">ACHETER DES BILLETS</a></div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="row page_nav_row">
+				<div class="col">
+					<div class="pagination">
+						{{knp_pagination_render(news)}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+	
+{% endblock %}
