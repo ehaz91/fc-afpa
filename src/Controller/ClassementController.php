@@ -21,9 +21,12 @@ class ClassementController extends AbstractController
         return $this->render('classement/classement.html.twig', [
          
             'controller_name' => 'ClassementController',
-            'news' => $news, 'NextFourMatchs' => $NextFourMatchs
-            
+            'news' => $news,
+            'NextFourMatchs' => $NextFourMatchs,
+            'current_menu' => 'classementActive'
         ]);
+
+        
     }
 
     

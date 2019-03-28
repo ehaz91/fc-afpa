@@ -4,8 +4,8 @@ namespace App\Repository;
 
 use App\Entity\News;
 use Doctrine\ORM\QueryBuilder;
-use Symfony\Bridge\Doctrine\RegistryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
  * @method News|null find($id, $lockMode = null, $lockVersion = null)
@@ -21,26 +21,12 @@ class NewsRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return Query
-     */
-    /*
-    public function findAllVisibleQuery(): Query
-    {
-        return $this->findAll()
-            ->orderBy('idNews', 'DESC')
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-*/
-
-    /**
      * @return News[]
      */
     public function findAll(): array
     {
         return $this->findVisibleQuery()
-            ->orderBy('n.idNews', 'DESC')
+            ->orderBy('n.id', 'DESC')
             ->getQuery()
             ->getResult();
     }
@@ -52,7 +38,7 @@ class NewsRepository extends ServiceEntityRepository
     {
         return $this->findVisibleQuery()
             ->setMaxResults(4)
-            ->orderBy('n.idNews', 'DESC')
+            ->orderBy('n.id', 'DESC')
             ->getQuery()
             ->getResult();
     }
@@ -65,7 +51,7 @@ class NewsRepository extends ServiceEntityRepository
     {
         return $this->findVisibleQuery()
             ->setMaxResults(1)
-            ->orderBy('n.idNews', 'DESC')
+            ->orderBy('n.id', 'DESC')
             ->getQuery()
             ->getResult();
     }
@@ -80,7 +66,6 @@ class NewsRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('n');
             
     }
-
 
     // /**
     //  * @return News[] Returns an array of News objects

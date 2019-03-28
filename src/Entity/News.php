@@ -2,80 +2,52 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-use App\Entity\Equipes;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
- * News
- *
- * @ORM\Table(name="news", indexes={@ORM\Index(name="NEWS_EQUIPES_FK", columns={"ID_EQUIPE"})})
  * @ORM\Entity(repositoryClass="App\Repository\NewsRepository")
  * @Vich\Uploadable
  */
 class News
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="ID_NEWS", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
      */
-    private $idNews;
+    private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="TITRE_NEWS", type="string", length=100, nullable=false)
+     * @ORM\Column(type="string", length=100)
      */
     private $titreNews;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="CREATED_AT_NEWS", type="datetime", nullable=false)
+     * @ORM\Column(type="datetime")
      */
     private $createdAtNews;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="TEXTE_NEWS", type="text", length=0, nullable=true)
+     * @ORM\Column(type="text")
      */
     private $texteNews;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="DESCRIPTION_NEWS", type="text", length=65535, nullable=true)
+     * @ORM\Column(type="text")
      */
     private $descriptionNews;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="IMAGE_NEWS", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $imageNews;
 
     /**
-     * @var \Equipes
-     *
-     * @ORM\ManyToOne(targetEntity="Equipes")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="ID_EQUIPE", referencedColumnName="ID_EQUIPE")
-     * })
-     */
-    private $idEquipe;
-
-    /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
-     * @Vich\UploadableField(mapping="news", fileNameProperty="IMAGE_NEWS")
+     * @Vich\UploadableField(mapping="news", fileNameProperty="image_news")
      * 
      * @var File
      */
@@ -88,9 +60,9 @@ class News
      */
     private $updatedAt;
 
-    public function getIdNews(): ?int
+    public function getId(): ?int
     {
-        return $this->idNews;
+        return $this->id;
     }
 
     public function getTitreNews(): ?string
@@ -122,7 +94,7 @@ class News
         return $this->texteNews;
     }
 
-    public function setTexteNews(?string $texteNews): self
+    public function setTexteNews(string $texteNews): self
     {
         $this->texteNews = $texteNews;
 
@@ -134,21 +106,33 @@ class News
         return $this->descriptionNews;
     }
 
-    public function setDescriptionNews(?string $descriptionNews): self
+    public function setDescriptionNews(string $descriptionNews): self
     {
         $this->descriptionNews = $descriptionNews;
 
         return $this;
     }
 
-    public function getIdEquipe(): ?Equipes
+    public function getImageNews(): ?string
     {
-        return $this->idEquipe;
+        return $this->imageNews;
     }
 
-    public function setIdEquipe(?Equipes $idEquipe): self
+    public function setImageNews(? string $imageNews): self
     {
-        $this->idEquipe = $idEquipe;
+        $this->imageNews = $imageNews;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }
@@ -157,18 +141,6 @@ class News
     {
         $this->createdAtNews = new \DateTime();
         $this->updatedAt = new \DateTime();
-    }
-
-    public function getImageNews()
-    {
-        return $this->imageNews;
-    }
-
-    public function setImageNews($imageNews)
-    {
-        $this->imageNews = $imageNews;
-
-        return $this;
     }
 
     /**

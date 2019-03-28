@@ -59,11 +59,11 @@
 						<div class="contact_form_container">
 							 <div id="contactForm" class="mt-4 contact">
             {{ form_start(form, {'attr': {'class': ' contact_form'}}) }}
-                <div class="col" style="margin-top:20px;">{{ form_widget(form.firstname, {'attr': {'class': 'input contact_input form-control'}}) }}</div>
-                <div class="col" style="margin-top:20px;">{{ form_widget(form.lastname, {'attr': {'class': 'input contact_input form-control'}}) }}</div>
-                <div class="col" style="margin-top:20px;">{{ form_widget(form.email, {'attr': {'class': 'input contact_input form-control'}}) }}</div>
-                <div class="col" style="margin-top:20px;">{{ form_widget(form.message, {'attr': {'class': 'input contact_input form-control'}}) }}</div>
-				<div class="col" style="color: red;">{{ form_errors(form.message, {'attr': {'class': 'input contact_input form-control'}}) }}</div>
+                <div class="col" style="margin-top:20px;">{{ form_widget(form.firstname, {'attr': {'class': 'input contact_input form-control', 'placeholder': 'Prenom'}}) }}</div>
+                <div class="col" style="margin-top:20px;">{{ form_widget(form.lastname, {'attr': {'class': 'input contact_input form-control', 'placeholder': 'Nom'}}) }}</div>
+                <div class="col" style="margin-top:20px;">{{ form_widget(form.email, {'attr': {'class': 'input contact_input form-control', 'placeholder': 'Email'}}) }}</div>
+                <div class="col" style="margin-top:20px;">{{ form_widget(form.message, {'attr': {'class': 'input contact_input form-control', 'placeholder': 'Votre Message'}}) }}</div>
+				  <div class="col" style="color: red;">{{ form_errors(form.message, {'attr': {'class': 'input contact_input form-control'}}) }}</div>
 
                 <div class="form-group btn-form">
                     <button class="btn btn-primary btn-no-hover btn-contact" type="submit">Envoyer</button>

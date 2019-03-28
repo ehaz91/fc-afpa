@@ -1,16 +1,16 @@
 easy_admin:
   entities:
       Sponsors:
-        class: App\Entity\Sponsors
+        class: App\Entity\Sponsor
         list:
           fields:
-            - {property: 'nomSponsors', label: 'Sponsors'}
-            - {property: 'logoSponsors', label: 'Image', type: 'image', base_path: '%app.path.sponsors%'}
+            - {property: 'nomSponsor', label: 'Sponsors'}
+            - {property: 'logoSponsor', label: 'Image', type: 'image', base_path: '%app.path.sponsors%'}
         new:
           fields:
-            - {property: 'nomSponsors', label: 'Sponsor'}
+            - {property: 'nomSponsor', label: 'Sponsor'}
             - {property: 'imageFile', label: 'Image', type: 'vich_image'}
         edit:
           fields:
-            - {property: 'nomSponsors', label: 'Sponsor'}
+            - {property: 'nomSponsor', label: 'Sponsor'}
             - {property: 'imageFile', label: 'Image', type: 'vich_image'}

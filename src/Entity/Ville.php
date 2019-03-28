@@ -2,64 +2,62 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Ville
- *
- * @ORM\Table(name="ville", indexes={@ORM\Index(name="VILLE_DEPARTEMENTS_FK", columns={"CODE_DEPARTEMENT"})})
- * @ORM\Entity(repositoryClass="App\Repository\VilleRepository") 
+ * @ORM\Entity(repositoryClass="App\Repository\VilleRepository")
  */
 class Ville
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="ID_VILLE", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
      */
-    private $idVille;
+    private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="NOM_VILLE", type="string", length=100, nullable=false)
+     * @ORM\Column(type="string", length=100)
      */
     private $nomVille;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="CP_VILLE", type="string", length=10, nullable=false)
+     * @ORM\Column(type="string", length=6)
      */
-    private $cpVille;
+    private $codePostal;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="CODE_INSEE", type="string", length=10, nullable=false)
+     * @ORM\Column(type="string", length=6)
      */
     private $codeInsee;
 
     /**
-     * @var \Departements
-     *
-     * @ORM\ManyToOne(targetEntity="Departements")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="CODE_DEPARTEMENT", referencedColumnName="CODE_DEPARTEMENT")
-     * })
+     * @ORM\ManyToOne(targetEntity="App\Entity\Departement", inversedBy="posseder")
      */
-    private $codeDepartement;
+    private $departement;
 
-    public function getIdVille(): ?int
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Utilisateur", mappedBy="ville")
+     */
+    private $habiter;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Equipe", mappedBy="ville")
+     */
+    private $localiser;
+
+    public function __construct()
     {
-        return $this->idVille;
+        $this->utilisateurs = new ArrayCollection();
+        $this->habiter = new ArrayCollection();
+        $this->localiser = new ArrayCollection();
     }
 
-    public function __toString()
+    public function getId(): ?int
     {
-        return (string) $this->idVille;
+        return $this->id;
     }
 
     public function getNomVille(): ?string
@@ -74,14 +72,14 @@ class Ville
         return $this;
     }
 
-    public function getCpVille(): ?string
+    public function getCodePostal(): ?string
     {
-        return $this->cpVille;
+        return $this->codePostal;
     }
 
-    public function setCpVille(string $cpVille): self
+    public function setCodePostal(string $codePostal): self
     {
-        $this->cpVille = $cpVille;
+        $this->codePostal = $codePostal;
 
         return $this;
     }
@@ -98,17 +96,113 @@ class Ville
         return $this;
     }
 
-    public function getCodeDepartement(): ?Departements
+    public function getDepartement(): ?Departement
     {
-        return $this->codeDepartement;
+        return $this->departement;
     }
 
-    public function setCodeDepartement(?Departements $codeDepartement): self
+    public function setDepartement(?Departement $departement): self
     {
-        $this->codeDepartement = $codeDepartement;
+        $this->departement = $departement;
 
         return $this;
     }
 
+    /**
+     * @return Collection|Utilisateur[]
+     */
+    public function getUtilisateurs(): Collection
+    {
+        return $this->utilisateurs;
+    }
 
+    public function addUtilisateur(Utilisateur $utilisateur): self
+    {
+        if (!$this->utilisateurs->contains($utilisateur)) {
+            $this->utilisateurs[] = $utilisateur;
+            $utilisateur->setHabiter($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUtilisateur(Utilisateur $utilisateur): self
+    {
+        if ($this->utilisateurs->contains($utilisateur)) {
+            $this->utilisateurs->removeElement($utilisateur);
+            // set the owning side to null (unless already changed)
+            if ($utilisateur->getHabiter() === $this) {
+                $utilisateur->setHabiter(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Utilisateur[]
+     */
+    public function getHabiter(): Collection
+    {
+        return $this->habiter;
+    }
+
+    public function addHabiter(Utilisateur $habiter): self
+    {
+        if (!$this->habiter->contains($habiter)) {
+            $this->habiter[] = $habiter;
+            $habiter->setVille($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHabiter(Utilisateur $habiter): self
+    {
+        if ($this->habiter->contains($habiter)) {
+            $this->habiter->removeElement($habiter);
+            // set the owning side to null (unless already changed)
+            if ($habiter->getVille() === $this) {
+                $habiter->setVille(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Equipe[]
+     */
+    public function getLocaliser(): Collection
+    {
+        return $this->localiser;
+    }
+
+    public function addLocaliser(Equipe $localiser): self
+    {
+        if (!$this->localiser->contains($localiser)) {
+            $this->localiser[] = $localiser;
+            $localiser->setVille($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLocaliser(Equipe $localiser): self
+    {
+        if ($this->localiser->contains($localiser)) {
+            $this->localiser->removeElement($localiser);
+            // set the owning side to null (unless already changed)
+            if ($localiser->getVille() === $this) {
+                $localiser->setVille(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return (string)$this->nomVille;
+    }
 }

@@ -2,86 +2,48 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Journee
- *
- * @ORM\Table(name="journee", indexes={@ORM\Index(name="JOURNEE_SAISON_FK", columns={"ID_SAISON"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\JourneeRepository")
  */
 class Journee
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="ID_JOURNEE", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
      */
-    private $idJournee;
+    private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="NUM_JOURNEE", type="string", length=12, nullable=false)
+     * @ORM\Column(type="string", length=15)
      */
     private $numJournee;
 
     /**
-     * @var \Saison
-     *
-     * @ORM\ManyToOne(targetEntity="Saison")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="ID_SAISON", referencedColumnName="ID_SAISON")
-     * })
+     * @ORM\OneToMany(targetEntity="App\Entity\Matchs", mappedBy="journee")
      */
-    private $idSaison;
+    private $comprendre;
 
-
-
-    /**
-     * Get the value of idJournee
-     *
-     * @return  int
-     */ 
-    public function getIdJournee()
+    public function __construct()
     {
-        return $this->idJournee;
+        $this->comprendre = new ArrayCollection();
     }
 
-    /**
-     * Set the value of idJournee
-     *
-     * @param  int  $idJournee
-     *
-     * @return  self
-     */ 
-    public function setIdJournee(int $idJournee)
+    public function getId(): ?int
     {
-        $this->idJournee = $idJournee;
-
-        return $this;
+        return $this->id;
     }
 
-    /**
-     * Get the value of numJournee
-     *
-     * @return  string
-     */ 
-    public function getNumJournee()
+    public function getNumJournee(): ?string
     {
         return $this->numJournee;
     }
 
-    /**
-     * Set the value of numJournee
-     *
-     * @param  string  $numJournee
-     *
-     * @return  self
-     */ 
-    public function setNumJournee(string $numJournee)
+    public function setNumJournee(string $numJournee): self
     {
         $this->numJournee = $numJournee;
 
@@ -89,24 +51,38 @@ class Journee
     }
 
     /**
-     * Get the value of idSaison
-     *
-     * @return  \Saison
-     */ 
-    public function getIdSaison()
+     * @return Collection|Matchs[]
+     */
+    public function getComprendre(): Collection
     {
-        return $this->idSaison;
+        return $this->comprendre;
     }
 
-
-    public function __toString(){
-        return (string) $this->idJournee;
-    }
-
-    public function setIdSaison(?Saison $idSaison): self
+    public function addComprendre(Matchs $comprendre): self
     {
-        $this->idSaison = $idSaison;
+        if (!$this->comprendre->contains($comprendre)) {
+            $this->comprendre[] = $comprendre;
+            $comprendre->setJournee($this);
+        }
 
         return $this;
+    }
+
+    public function removeComprendre(Matchs $comprendre): self
+    {
+        if ($this->comprendre->contains($comprendre)) {
+            $this->comprendre->removeElement($comprendre);
+            // set the owning side to null (unless already changed)
+            if ($comprendre->getJournee() === $this) {
+                $comprendre->setJournee(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return (string)$this->numJournee;
     }
 }

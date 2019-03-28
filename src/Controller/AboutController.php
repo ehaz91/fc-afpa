@@ -13,7 +13,7 @@ class AboutController extends AbstractController
     public function index()
     {
         return $this->render('about/about.html.twig', [
-             'current_menu' => 'news'    
+             'current_menu' => 'aboutActive'
         ]);
     }
 }

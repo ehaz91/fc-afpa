@@ -432,7 +432,7 @@
                                     <!-- Prochian Matchs -->
                                     <div class="next_games_container text-center">
                                       <div class="sidebar_title_container">
-                                        <div class="sidebar_title">
+                                        <div class="sidebar_title border_side_container">
                                             <h3>Prochains Matchs</h3>
                                         </div>                                       
                                     </div>
@@ -445,24 +445,24 @@
                                                     <div
                                                         class="d-flex flex-xl-row flex-lg-column flex-row align-items-xl-center align-items-lg-start align-items-center justify-content-start">
                                                         <div class="team_logo">
-                                                            <a href="team.html"><img src="{{ asset('assets/images/logos_clubs/' ~ NextFourMatchs.LOGO)}}" alt=""></a>
+                                                            <a href="team.html"><img src="{{ asset('assets/images/logos_clubs/' ~ NextFourMatchs.logo_domicile)}}" alt=""></a>
                                                         </div>
                                                         <div class="team_name text-left">
-                                                            <a href="team.html">{{ NextFourMatchs.NOM_EQUIPE }}</a>
+                                                            <a href="team.html">{{ NextFourMatchs.equipe_domicile }}</a>
                                                         </div>
                                                     </div>
                                                     <div
                                                         class="d-flex flex-xl-row flex-lg-column flex-row align-items-xl-center align-items-lg-end align-items-center justify-content-end">
                                                         <div class="team_name text-right order-xl-1 order-lg-2 order-1">
-                                                            <a href="team.html">{{ NextFourMatchs.EQUIPE_EXTERIEUR }}</a>
+                                                            <a href="team.html">{{ NextFourMatchs.equipe_exterieur }}</a>
                                                         </div>
                                                         <div class="team_logo order-xl-2 order-lg-1 order-2">
-                                                            <a href="team.html"><img src="{{ asset('assets/images/logos_clubs/' ~ NextFourMatchs.LOGO_EXTERIEUR)}}" alt=""></a>
+                                                            <a href="team.html"><img src="{{ asset('assets/images/logos_clubs/' ~ NextFourMatchs.logo_exterieur)}}" alt=""></a>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="next_games_date">
-                                                    <a href="#">{{ NextFourMatchs.DATE_MATCHS | date('F d, Y') }}</a>
+                                                    <a href="#">{{ NextFourMatchs.date_match | date('F d, Y') }}</a>
                                                 </div>
                                             </li>                                        
                                         </ul>
@@ -473,7 +473,7 @@
                                     <!-- Latest Posts -->
                                     <div class="latest_posts">
                                         <div class="sidebar_title_container">
-                                            <div class="sidebar_title">
+                                            <div class="sidebar_title border_side_container">
                                                 <h3>Dernières News</h3>
                                             </div>
                                         </div>

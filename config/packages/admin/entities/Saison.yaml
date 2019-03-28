@@ -1,0 +1,16 @@
+easy_admin:
+  entities:
+      Saisons:
+        class: App\Entity\Saison
+
+        list:
+          title: 'Saisons'
+          fields:
+            - {property: 'id', label: 'ID Saison'}
+            - {property: 'saison', label: 'Nom de Saison'}
+        new:
+          fields:
+            - {property: 'saison', label: 'Nom de Saison'}
+        edit:
+          fields:
+            - {property: 'saison', label: 'Nom de Saison'}

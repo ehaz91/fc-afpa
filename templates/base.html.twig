@@ -53,7 +53,7 @@
             href="{{ asset('assets/css/responsive/responsive-me.css')}}">
 
         <!-- Java registration -->
-        <link
+        <link   
             rel="stylesheet"
             type="text/css"
             href="{{ asset('assets/css/responsive/responsive-me.css')}}">
@@ -67,33 +67,29 @@
         <!-- Header -->
 <nav class="navbar navbar-expand-md navbar-dark bg-navbar fixed-top">
 
-<div class="test">
+
+<div>
     <img class="logo-navbar" src="{{ asset('assets/images/logos_clubs/logo_afpa.png')}}" alt=""></div>
-    <a class="navbar-brand" href="#">FC AFPA</a>
-    <button aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+    <p class="navbar-brand">FC AFPA</p>
     <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="{{path('home')}}">Accueil
-                    <span class="sr-only">(current)</span>
-                </a>
+                <a class="nav-link {% if current_menu is defined and current_menu == 'accueilActive' %}active{% endif %}" href="{{path('home')}}">Accueil</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{path('about')}}">Le Club</a>
+                <a class="nav-link {% if current_menu is defined and current_menu == 'aboutActive' %}active{% endif %}" href="{{path('about')}}">Le Club</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{path('news')}}">News</a>
+                <a class="nav-link {% if current_menu is defined and current_menu == 'newsActive' %}active{% endif %}" href="{{path('news')}}">News</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{path('calendrier')}}">Calendrier</a>
+                <a class="nav-link {% if current_menu is defined and current_menu == 'calendrierActive' %}active{% endif %}" href="{{path('calendrier')}}">Calendrier</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{path('classement')}}">Classement</a>
+                <a class="nav-link {% if current_menu is defined and current_menu == 'classementActive' %}active{% endif %}" href="{{path('classement')}}">Classement</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{path('contact')}}">Contact</a>
+                <a class="nav-link {% if current_menu is defined and current_menu == 'contactActive' %}active{% endif %}" href="{{path('contact')}}">Contact</a>
             </li>
         </ul>
     </div>
@@ -163,7 +159,7 @@
 
                     <div class="footer-wrap">
                         <div class="copyrights">Copyright
-                            <a href="https://www.afpa-formation-developpeur.be">AFPA Formation Developpeur Web et Web Mobile</a>
+                            <a href="https://www.afpa.fr">AFPA Formation Developpeur Web et Web Mobile</a>
                             2019. Tous droits réservés.</div>
                         <div class="clear"></div>
                     </div>

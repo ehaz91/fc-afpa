@@ -146,10 +146,10 @@
                     <div class="row results_row">
                         <div class="col">
                             <div class="results_title_container text-center">
-                                <div class="results_title">{{ LastMatchShow.Titre_Match}}</div>
-                                <div class="results_subtitle">{{ LastMatchShow.DATE_MATCHS | date('d/m/y') }}
+                                <div class="results_title">{{ LastMatchShow.titre}}</div>
+                                <div class="results_subtitle">{{ LastMatchShow.date_match | date('d/m/y') }}
                                     - Journée n°
-                                    {{ LastMatchShow.ID_JOURNEE }}
+                                    {{ LastMatchShow.journee_id }}
                                     du championnat de Ligue 1
                                 </div>
                             </div>
@@ -161,13 +161,13 @@
                                         <div
                                             class="team_image d-flex flex-column align-items-start justify-content-end">
                                             <img
-                                                src="{{ asset('assets/images/logos_clubs/' ~ LastMatchShow.LOGO)}}"
+                                                src="{{ asset('assets/images/logos_clubs/' ~ LastMatchShow.logo_domicile)}}"
                                                 alt=""
                                                ></div>
                                         <div class="text-center">
                                             <div class="result_num">
-                                                {{ LastMatchShow.SCORE_EQUIPE1 }}</div>
-                                            <div class="result_team">{{ LastMatchShow.NOM_EQUIPE }}</div>
+                                                {{ LastMatchShow.score_equipe_dom }}</div>
+                                            <div class="result_team">{{ LastMatchShow.equipe_domicile }}</div>
                                         </div>
                                     </div>
 
@@ -176,12 +176,12 @@
                                     <div
                                         class="result_content d-flex flex-row align-items-end justify-content-start">
                                         <div class="text-center">
-                                            <div class="result_num">{{ LastMatchShow.SCORE_EQUIPE2 }}</div>
-                                            <div class="result_team">{{ LastMatchShow.EQUIPE_EXTERIEUR }}</div>
+                                            <div class="result_num">{{ LastMatchShow.score_equipe_ext }}</div>
+                                            <div class="result_team">{{ LastMatchShow.equipe_exterieur }}</div>
                                         </div>
                                         <div class="team_image d-flex flex-column align-items-end justify-content-end">
                                             <img
-                                                src="{{ asset('assets/images/logos_clubs/' ~ LastMatchShow.LOGO_EXTERIEUR)}}"
+                                                src="{{ asset('assets/images/logos_clubs/' ~ LastMatchShow.logo_exterieur)}}"
                                                 alt=""
                                                ></div>
                                     </div>
@@ -192,7 +192,7 @@
                     </div>
                     <div class="row">
                         <div class="col text-resume-match text-center">
-                            {{ LastMatchShow.RESUME_MATCHS}}
+                            {{ LastMatchShow.resume_match}}
                         </div>
                     </div>
                 {% endfor %}
@@ -235,26 +235,26 @@
                         {% for LastFourMatchsShow in LastFourMatchs %}
                             <div class="news-block d-flex">
                                 <div class="home-team d-flex">
-                                    <div><img class="img-last-four-matchs" src="{{ asset('assets/images/logos_clubs/' ~ LastFourMatchsShow.LOGO)}}" alt=""></div>
-                                    <div class="home-team-text">{{ LastFourMatchsShow.NOM_EQUIPE }}</div>
+                                    <div><img class="img-last-four-matchs" src="{{ asset('assets/images/logos_clubs/' ~ LastFourMatchsShow.logo_domicile)}}" alt=""></div>
+                                    <div class="home-team-text">{{ LastFourMatchsShow.equipe_domicile }}</div>
                                 </div>
                                 <div class="stats-match">
                                     
-                                        <div class="competition-match d-flex justify-content">Journée n°{{ LastFourMatchsShow.ID_JOURNEE}} de Ligue 1</div>
+                                        <div class="competition-match d-flex justify-content">Journée n°{{ LastFourMatchsShow.journee_id}} de Ligue 1</div>
                                             <div class="d-flex scores-last-matchs">
-                                                <div class="score"> {{ LastFourMatchsShow.SCORE_EQUIPE1 }}</div>
+                                                <div class="score"> {{ LastFourMatchsShow.score_equipe_dom }}</div>
                                                 <div class="space-scores">-</div>
-                                                <div class="score"> {{ LastFourMatchsShow.SCORE_EQUIPE2 }}</div>
+                                                <div class="score"> {{ LastFourMatchsShow.score_equipe_ext }}</div>
                                             </div>
                                         
-                                        <div class="date col">{{ LastFourMatchsShow.DATE_MATCHS | date('d/m/y') }}</div>
+                                        <div class="date col">{{ LastFourMatchsShow.date_match | date('d/m/y') }}</div>
                                      
                                 </div>
                                 
                                
                                 <div class="visitor-team d-flex">
-                                    <div class="home-team-text-right"> {{ LastFourMatchsShow.EQUIPE_EXTERIEUR }} </div>
-                                    <div><img class="img-last-four-matchs" src="{{ asset('assets/images/logos_clubs/' ~ LastFourMatchsShow.LOGO_EXTERIEUR)}}" alt=""></div>
+                                    <div class="home-team-text-right"> {{ LastFourMatchsShow.equipe_exterieur }} </div>
+                                    <div><img class="img-last-four-matchs" src="{{ asset('assets/images/logos_clubs/' ~ LastFourMatchsShow.logo_exterieur)}}" alt=""></div>
                                 </div>
                             </div>
                         {% endfor %}

@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 
-use App\Entity\User;
+use App\Entity\Utilisateur;
 use App\Form\RegistrationType;
 use App\Form\PasswordUpdateType;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,7 +27,7 @@ class SecurityController extends Controller
      */
     public function registration(Request $request, ObjectManager $manager, UserPasswordEncoderInterface $encoder)
     {
-        $user = new User();
+        $user = new Utilisateur();
         $form = $this->createForm(RegistrationType::class, $user);
 
         $form->handleRequest($request);
@@ -35,7 +35,7 @@ class SecurityController extends Controller
         if($form->isSubmitted() && $form->isValid()){
             $user->setDateInscription(new \DateTime);
             $user->setRoles(['ROLE_USER']);
-            $user->setIsvalide(true);
+            $user->setIsValid(true);
 
             $hash = $encoder->encodePassword($user, $user->getPassword());
             $user->setPassword($hash);
@@ -68,7 +68,7 @@ class SecurityController extends Controller
             $email = $request->request->get('email');
  
             $entityManager = $this->getDoctrine()->getManager();
-            $user = $entityManager->getRepository(User::class)->findOneByEmailUser($email);
+            $user = $entityManager->getRepository(Utilisateur::class)->findOneByEmailUtilisateur($email);
             /* @var $user User */
  
             if ($user === null) {
@@ -89,7 +89,7 @@ class SecurityController extends Controller
  
             $message = (new \Swift_Message('Forgot Password'))
                 ->setFrom('testsymfony4tc@gmail.com')
-                ->setTo($user->getEmailUser())
+                ->setTo($user->getEmailUtilisateur())
                 ->setBody(
                     "Voici le lien pour réinitialiser votre mot de passe " . $url,
                     'text/html'
@@ -114,7 +114,7 @@ class SecurityController extends Controller
         if ($request->isMethod('POST')) {
             $entityManager = $this->getDoctrine()->getManager();
 
-            $user = $entityManager->getRepository(User::class)->findOneByResetToken($token);
+            $user = $entityManager->getRepository(Utilisateur::class)->findOneByResetToken($token);
             /* @var $user User */
 
             if ($user === null) {

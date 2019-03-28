@@ -431,18 +431,29 @@
 
 	<!-- CTA -->
 
-	<div class="cta">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="cta_content d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-start">
-						<div class="cta_text">Vous voulez rejoindre notre <span> Equipe ?</span></div>
-						<div class="cta_button button ml-md-auto"><a href="#">Voir plus d'infos</a></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="cta">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="cta_content d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-start">
+                    <div class="cta_text">Vous voulez rejoindre notre
+                        <span>
+                            Equipe ?</span>
+                    </div>
+                    {% if not app.user%}
+                        <div class="cta_button button ml-md-auto">
+                            <a href="{{path('connexion')}}">Ajouter un Témoignage</a>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="cta_button button ml-md-auto">
+                        <a href="#">Ajouter un Témoignage</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
 <!--END SUPER CONTRAINER !-->
 </div>
 

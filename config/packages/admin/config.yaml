@@ -4,7 +4,7 @@ easy_admin:
     brand_color: '#161d4a'
 
   user:
-    name_property_path: 'Username'
+    name_property_path: 'username'
   list:
     actions:
       - {name: 'edit', icon: 'pencil', label: false, css_class: 'btn btn-secondary'}

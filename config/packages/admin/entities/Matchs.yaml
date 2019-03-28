@@ -2,34 +2,40 @@ easy_admin:
   entities:
       Matchs:
         class: App\Entity\Matchs
+        label: Matchs
+        actions:
+          - {name: 'new', label: Créer Match}
         edit:
           fields:
-            - {property: 'dateMatchs', label: 'Date du match'}
-            - {property: 'titreMatch', label: 'Descriptif Match'}
-            - {property: 'resumeMatchs', label: 'Résumé du match'}
-            - {property: 'scoreEquipe1', label: 'Score domicile'}
-            - {property: 'scoreEquipe2', label: 'Score extérieur'}
-            - {property: 'idEquipe', label: 'Équipe domicile'}
-            - {property: 'idEquipeEquipes', label: 'Équipe extérieur'}
-            - {property: 'idJournee', label: 'Journée'}
+            - {property: 'dateMatch', label: 'Date du match', format: 'd/m/Y à H:i:s'}
+            - {property: 'titre', label: 'Titre du match'}
+            - {property: 'resultatMatch', label: 'Résultat AFPA'}
+            - {property: 'resumeMatch', label: 'Résumé du match'}
+            - {property: 'scoreEquipeDom', label: 'Score domicile'}
+            - {property: 'scoreEquipeExt', label: 'Score extérieur'}
+            - {property: 'equipeDomicile', label: 'Équipe domicile'}
+            - {property: 'equipeExterieur', label: 'Équipe extérieur'}
+            - {property: 'journee', label: 'Journée'}
         list:
           fields:
-            - {property: 'idMatchs', label: 'ID du match'}
-            - {property: 'dateMatchs', label: 'Date du match', format: 'd/m/Y à H:i:s'}
-            - {property: 'titreMatch', label: 'Descriptif Match'}
-            - {property: 'resumeMatchs', label: 'Résumé du match'}
-            - {property: 'scoreEquipe1', label: 'Score domicile'}
-            - {property: 'scoreEquipe2', label: 'Score extérieur'}
-            - {property: 'idEquipe', label: 'Équipe domicile'}
-            - {property: 'idEquipeEquipes', label: 'Équipe extérieur'}
-            - {property: 'idJournee', label: 'Journée'}
+            - {property: 'id', label: 'ID match'}
+            - {property: 'dateMatch', label: 'Date du match', format: 'd/m/Y à H:i:s'}
+            - {property: 'titre', label: 'Titre du match', , charset: 'UTF-8'}
+            - {property: 'resultatMatch', label: 'Résultat AFPA'}
+            - {property: 'resumeMatch', label: 'Résumé du match'}
+            - {property: 'scoreEquipeDom', label: 'Score domicile'}
+            - {property: 'scoreEquipeExt', label: 'Score extérieur'}
+            - {property: 'equipeDomicile', label: 'Équipe domicile'}
+            - {property: 'equipeExterieur', label: 'Équipe extérieur'}
+            - {property: 'journee', label: 'Journée'}
         new:
           fields:
-            - {property: 'dateMatchs', label: 'Date du match'}
-            - {property: 'titreMatch', label: 'Descriptif Match'}
-            - {property: 'resumeMatchs', label: 'Résumé du match'}
-            - {property: 'scoreEquipe1', label: 'Score domicile'}
-            - {property: 'scoreEquipe2', label: 'Score extérieur'}
-            - {property: 'idEquipe', label: 'Équipe domicile'}
-            - {property: 'idEquipeEquipes', label: 'Équipe extérieur'}
-            - {property: 'idJournee', label: 'Journée'}
+            - {property: 'dateMatch', label: 'Date du match', format: 'd/m/Y à H:i:s'}
+            - {property: 'titre', label: 'Titre du match'}
+            - {property: 'resultatMatch', label: 'Résultat AFPA'}
+            - {property: 'resumeMatch', label: 'Résumé du match'}
+            - {property: 'scoreEquipeDom', label: 'Score domicile'}
+            - {property: 'scoreEquipeExt', label: 'Score extérieur'}
+            - {property: 'equipeDomicile', label: 'Équipe domicile'}
+            - {property: 'equipeExterieur', label: 'Équipe extérieur'}
+            - {property: 'journee', label: 'Journée'}

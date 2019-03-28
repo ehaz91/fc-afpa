@@ -7,71 +7,69 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Competition
- *
- * @ORM\Table(name="competition", indexes={@ORM\Index(name="COMPETITION_EQUIPES_FK", columns={"ID_EQUIPE"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\CompetitionRepository")
  */
 class Competition
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="ID_COMPETITION", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
      */
-    private $idCompetition;
+    private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="NOM_COMPETITION", type="string", length=50, nullable=false)
+     * @ORM\Column(type="string", length=50)
      */
     private $nomCompetition;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="DATE_DEBUT_COMP", type="date", nullable=false)
+     * @ORM\Column(type="datetime")
      */
-    private $dateDebutComp;
+    private $DateDebutCompet;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="DATE_FIN_COMP", type="date", nullable=false)
+     * @ORM\Column(type="datetime")
      */
-    private $dateFinComp;
+    private $DateFinCompet;
 
     /**
-     * @var \Equipes
-     *
-     * @ORM\ManyToOne(targetEntity="Equipes")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="ID_EQUIPE", referencedColumnName="ID_EQUIPE")
-     * })
+     * @ORM\OneToMany(targetEntity="App\Entity\Classement", mappedBy="competition")
      */
-    private $idEquipe;
+    private $impliquer;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Saison", mappedBy="idCompetition")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Journee")
      */
-    private $idSaison;
+    private $comporter;
 
     /**
-     * Constructor
+     * @ORM\OneToMany(targetEntity="App\Entity\Matchs", mappedBy="competition")
      */
+    private $disposer;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Equipe")
+     */
+    private $participer;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Saison")
+     */
+    private $englober;
+
     public function __construct()
     {
-        $this->idSaison = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->impliquer = new ArrayCollection();
+        $this->comporter = new ArrayCollection();
+        $this->disposer = new ArrayCollection();
+        $this->participer = new ArrayCollection();
+        $this->englober = new ArrayCollection();
     }
 
-    public function getIdCompetition(): ?int
+    public function getId(): ?int
     {
-        return $this->idCompetition;
+        return $this->id;
     }
 
     public function getNomCompetition(): ?string
@@ -86,38 +84,145 @@ class Competition
         return $this;
     }
 
-    public function getDateDebutComp(): ?\DateTimeInterface
+    public function getDateDebutCompet(): ?\DateTimeInterface
     {
-        return $this->dateDebutComp;
+        return $this->DateDebutCompet;
     }
 
-    public function setDateDebutComp(\DateTimeInterface $dateDebutComp): self
+    public function setDateDebutCompet(\DateTimeInterface $DateDebutCompet): self
     {
-        $this->dateDebutComp = $dateDebutComp;
+        $this->DateDebutCompet = $DateDebutCompet;
 
         return $this;
     }
 
-    public function getDateFinComp(): ?\DateTimeInterface
+    public function getDateFinCompet(): ?\DateTimeInterface
     {
-        return $this->dateFinComp;
+        return $this->DateFinCompet;
     }
 
-    public function setDateFinComp(\DateTimeInterface $dateFinComp): self
+    public function setDateFinCompet(\DateTimeInterface $DateFinCompet): self
     {
-        $this->dateFinComp = $dateFinComp;
+        $this->DateFinCompet = $DateFinCompet;
 
         return $this;
     }
 
-    public function getIdEquipe(): ?Equipes
+    /**
+     * @return Collection|Classement[]
+     */
+    public function getImpliquer(): Collection
     {
-        return $this->idEquipe;
+        return $this->impliquer;
     }
 
-    public function setIdEquipe(?Equipes $idEquipe): self
+    public function addImpliquer(Classement $impliquer): self
     {
-        $this->idEquipe = $idEquipe;
+        if (!$this->impliquer->contains($impliquer)) {
+            $this->impliquer[] = $impliquer;
+            $impliquer->setCompetition($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImpliquer(Classement $impliquer): self
+    {
+        if ($this->impliquer->contains($impliquer)) {
+            $this->impliquer->removeElement($impliquer);
+            // set the owning side to null (unless already changed)
+            if ($impliquer->getCompetition() === $this) {
+                $impliquer->setCompetition(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Journee[]
+     */
+    public function getComporter(): Collection
+    {
+        return $this->comporter;
+    }
+
+    public function addComporter(Journee $comporter): self
+    {
+        if (!$this->comporter->contains($comporter)) {
+            $this->comporter[] = $comporter;
+        }
+
+        return $this;
+    }
+
+    public function removeComporter(Journee $comporter): self
+    {
+        if ($this->comporter->contains($comporter)) {
+            $this->comporter->removeElement($comporter);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Matchs[]
+     */
+    public function getDisposer(): Collection
+    {
+        return $this->disposer;
+    }
+
+    public function addDisposer(Matchs $disposer): self
+    {
+        if (!$this->disposer->contains($disposer)) {
+            $this->disposer[] = $disposer;
+            $disposer->setCompetition($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDisposer(Matchs $disposer): self
+    {
+        if ($this->disposer->contains($disposer)) {
+            $this->disposer->removeElement($disposer);
+            // set the owning side to null (unless already changed)
+            if ($disposer->getCompetition() === $this) {
+                $disposer->setCompetition(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return (string)$this->nomCompetition;
+    }
+
+    /**
+     * @return Collection|Equipe[]
+     */
+    public function getParticiper(): Collection
+    {
+        return $this->participer;
+    }
+
+    public function addParticiper(Equipe $participer): self
+    {
+        if (!$this->participer->contains($participer)) {
+            $this->participer[] = $participer;
+        }
+
+        return $this;
+    }
+
+    public function removeParticiper(Equipe $participer): self
+    {
+        if ($this->participer->contains($participer)) {
+            $this->participer->removeElement($participer);
+        }
 
         return $this;
     }
@@ -125,29 +230,26 @@ class Competition
     /**
      * @return Collection|Saison[]
      */
-    public function getIdSaison(): Collection
+    public function getEnglober(): Collection
     {
-        return $this->idSaison;
+        return $this->englober;
     }
 
-    public function addIdSaison(Saison $idSaison): self
+    public function addEnglober(Saison $englober): self
     {
-        if (!$this->idSaison->contains($idSaison)) {
-            $this->idSaison[] = $idSaison;
-            $idSaison->addIdCompetition($this);
+        if (!$this->englober->contains($englober)) {
+            $this->englober[] = $englober;
         }
 
         return $this;
     }
 
-    public function removeIdSaison(Saison $idSaison): self
+    public function removeEnglober(Saison $englober): self
     {
-        if ($this->idSaison->contains($idSaison)) {
-            $this->idSaison->removeElement($idSaison);
-            $idSaison->removeIdCompetition($this);
+        if ($this->englober->contains($englober)) {
+            $this->englober->removeElement($englober);
         }
 
         return $this;
     }
-
 }

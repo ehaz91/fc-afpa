@@ -19,7 +19,7 @@ easy_admin:
         list:
           title: 'News'
           fields:
-            - {property: 'idNews', label: 'ID'}
+            - {property: 'id', label: 'ID'}
             - {property: 'imageNews', label: 'Image', type: image, base_path: '%app.path.news%'}
             - {property: 'titreNews', label: 'Titre'}
             - {property: 'createdAtNews', label: 'Crée le', format: 'd/m/Y à H:i:s'}

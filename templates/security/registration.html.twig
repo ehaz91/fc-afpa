@@ -1,4 +1,4 @@
-{%extends "base.html.twig" %}
+{% extends "base.html.twig" %}
 
 {% block stylesheets %}
     <link
@@ -25,17 +25,17 @@
                  <div>Nom
                     </div>
                     <div class="error-form">
-                        {{ form_errors(form.nomUser)}}
+                        {{ form_errors(form.nom_utilisateur)}}
                     </div>
-                    {{ form_widget(form.nomUser, {'attr': {'class': 'input form-control'}}) }}
+                    {{ form_widget(form.nom_utilisateur, {'attr': {'class': 'input form-control'}}) }}
                 </div>
                 <div class="form-wrapper margin-left-register">
                     <div>Prénom
                     </div>
                     <div class="error-form">
-                        {{ form_errors(form.prenomUser)}}
+                        {{ form_errors(form.prenom_utilisateur)}}
                     </div>
-                    {{ form_widget(form.prenomUser, {'attr': {'class': 'input form-control'}}) }}
+                    {{ form_widget(form.prenom_utilisateur, {'attr': {'class': 'input form-control'}}) }}
                 </div>
 
                 <div class="form-wrapper margin-left-register">
@@ -69,24 +69,41 @@
                     <div>Email
                     </div>
                     <div class="error-form">
-                        {{ form_errors(form.emailUser)}}
+                        {{ form_errors(form.email_utilisateur)}}
                     </div>
-                    {{ form_widget(form.emailUser, {'attr': {'class': 'input form-control'}}) }}
+                    {{ form_widget(form.email_utilisateur, {'attr': {'class': 'input form-control'}}) }}
 
                 </div>
                 <div class="form-wrapper margin-left-register">
                     <div>Téléphone
                     </div>
                     <div class="error-form">
-                        {{ form_errors(form.telephoneUser)}}
+                        {{ form_errors(form.telephone_utilisateur)}}
                     </div>
-                    {{ form_widget(form.telephoneUser, {'attr': {'class': 'input form-control'}}) }}
+                    {{ form_widget(form.telephone_utilisateur, {'attr': {'class': 'input form-control'}}) }}
                 </div>
                 <div class="form-wrapper margin-left-register">
                     <div>Adresse
                     </div>
-                    {{ form_widget(form.adresseUser, {'attr': {'class': 'input form-control'}}) }}
+                    {{ form_widget(form.adresse_utilisateur, {'attr': {'class': 'input form-control'}}) }}
+                </div>
 
+                <div class="form-wrapper margin-left-register">
+                    <div>Département
+                    </div>
+                    <div class="error-form">
+                        {{ form_errors(form.departement)}}
+                    </div>
+                    {{ form_widget(form.departement, {'attr': {'class': 'input form-control'}}) }}
+                </div>
+
+                <div class="form-wrapper margin-left-register">
+                    <div>Ville
+                    </div>
+                    <div class="error-form">
+                        {{ form_errors(form.ville)}}
+                    </div>
+                    {{ form_widget(form.ville, {'attr': {'class': 'input form-control'}}) }}
                 </div>
 
                 <button class=" form-wrapper margin-left-register btn btn-primary btn-no-hover" type="submit">Inscription</button>
@@ -95,4 +112,9 @@
         </div>
 
     </body>
+
+{% block javascript %}
+    <script type="text/javascript" src="{{ asset('assets/js/calendrier_js/jquery.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/app.js')}}"></script>
+{% endblock %}
 {% endblock %}

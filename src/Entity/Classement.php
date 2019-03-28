@@ -5,63 +5,50 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Classement
- *
- * @ORM\Table(name="classement", indexes={@ORM\Index(name="CLASSEMENT_JOURNEE_FK", columns={"ID_JOURNEE"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\ClassementRepository")
  */
 class Classement
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="ID_CLASSEMENT", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
      */
-    private $idClassement;
+    private $id;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="POSITION_CLASSEMENT", type="integer", nullable=false)
+     * @ORM\Column(type="integer")
      */
     private $positionClassement;
 
     /**
-     * @var int|null
-     *
-     * @ORM\Column(name="POINTS_CLASSLEMENT", type="integer", nullable=true)
+     * @ORM\Column(type="integer")
      */
     private $pointsClassement;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="BUTS_MARQUES", type="integer", nullable=false)
+     * @ORM\Column(type="integer")
      */
     private $butsMarques;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="BUTS_ENCAISSES", type="integer", nullable=false)
+     * @ORM\Column(type="integer")
      */
     private $butsEncaisses;
 
     /**
-     * @var \Journee
-     *
-     * @ORM\ManyToOne(targetEntity="Journee")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="ID_JOURNEE", referencedColumnName="ID_JOURNEE")
-     * })
+     * @ORM\ManyToOne(targetEntity="App\Entity\Equipe", inversedBy="classer")
      */
-    private $idJournee;
+    private $equipe;
 
-    public function getIdClassement(): ?int
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Competition", inversedBy="impliquer")
+     */
+    private $competition;
+
+    public function getId(): ?int
     {
-        return $this->idClassement;
+        return $this->id;
     }
 
     public function getPositionClassement(): ?int
@@ -81,7 +68,7 @@ class Classement
         return $this->pointsClassement;
     }
 
-    public function setPointsClassement(?int $pointsClassement): self
+    public function setPointsClassement(int $pointsClassement): self
     {
         $this->pointsClassement = $pointsClassement;
 
@@ -112,17 +99,27 @@ class Classement
         return $this;
     }
 
-    public function getIdJournee(): ?Journee
+    public function getEquipe(): ?Equipe
     {
-        return $this->idJournee;
+        return $this->equipe;
     }
 
-    public function setIdJournee(?Journee $idJournee): self
+    public function setEquipe(?Equipe $equipe): self
     {
-        $this->idJournee = $idJournee;
+        $this->equipe = $equipe;
 
         return $this;
     }
 
+    public function getCompetition(): ?Competition
+    {
+        return $this->competition;
+    }
 
+    public function setCompetition(?Competition $competition): self
+    {
+        $this->competition = $competition;
+
+        return $this;
+    }
 }

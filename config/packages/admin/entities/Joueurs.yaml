@@ -1,4 +1,35 @@
 easy_admin:
   entities:
-      Matchs:
-        class: App\Entity\JoueursEquipe
+      Joueurs:
+        class: App\Entity\Joueur
+        edit:
+          title: 'Éditer un joueur'
+          fields:
+            - {property: 'nomJoueur', label: 'Nom'}
+            - {property: 'prenomJoueur', label: 'Prenom'}
+            - {property: 'ageJoueur', label: 'Age'}
+            - {property: 'numMaillotJoueur', label: 'Numéro de maillot'}
+            - {property: 'equipe', label: 'Equipe'}
+            - {property: 'nationalite', label: 'Nationalité'}
+            - {property: 'posteJoueur', label: 'Poste Joueur'}
+        new:
+          title: 'Ajouter un joueur'
+          fields:
+            - {property: 'nomJoueur', label: 'Nom'}
+            - {property: 'prenomJoueur', label: 'Prenom'}
+            - {property: 'ageJoueur', label: 'Age'}
+            - {property: 'numMaillotJoueur', label: 'Numéro de maillot'}
+            - {property: 'equipe', label: 'Equipe'}
+            - {property: 'nationalite', label: 'Nationalité'}
+            - {property: 'posteJoueur', label: 'Poste Joueur'}
+        list:
+          title: 'Joueurs'
+          fields:
+            - {property: 'id', label: 'ID Joueur'}
+            - {property: 'nomJoueur', label: 'Nom'}
+            - {property: 'prenomJoueur', label: 'Prenom'}
+            - {property: 'ageJoueur', label: 'Age'}
+            - {property: 'numMaillotJoueur', label: 'Numéro de maillot'}
+            - {property: 'equipe', label: 'Equipe'}
+            - {property: 'nationalite', label: 'Nationalité'}
+            - {property: 'posteJoueur', label: 'Poste Joueur'}

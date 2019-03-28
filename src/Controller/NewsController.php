@@ -26,7 +26,7 @@ class NewsController extends AbstractController
             $repo->findAll(),
         $request->query->getInt('page',1),3);
         return $this->render('news/news.html.twig', [
-            
+            'current_menu' => 'newsActive',
             'news' => $news
         ]);
     }

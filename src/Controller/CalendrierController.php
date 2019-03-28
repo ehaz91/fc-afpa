@@ -20,7 +20,8 @@ class CalendrierController extends AbstractController
         return $this->render('calendrier/calendrier.html.twig', [            
                 'last_news' => $news,
                 'matchs' => $matchs,
-                'nextmatch' => $nextmatch
+                'nextmatch' => $nextmatch,
+                'current_menu' => 'calendrierActive'
         ]);
     }
 }

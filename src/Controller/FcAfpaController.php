@@ -18,7 +18,7 @@ class FcAfpaController extends AbstractController
     {
         if($user = $this->getUser())
             {
-                if($user->getIsvalide() == 0)
+                if($user->getIsValid() == 0)
                 {
                     return $this->redirectToRoute('deconnexion');
                 }
@@ -30,7 +30,11 @@ class FcAfpaController extends AbstractController
         $LastFourMatchs = $repoMatchs->findLastFourMatchs(1);
 
         return $this->render('fc_afpa/home.html.twig', [  
-                'news' => $news, 'lastNews' => $oneNews, 'LastMatch' => $LastMatch, 'LastFourMatchs' => $LastFourMatchs     
+                'news' => $news,
+                'lastNews' => $oneNews,
+                'LastMatch' => $LastMatch,
+                'LastFourMatchs' => $LastFourMatchs,
+                'current_menu' => 'accueilActive'
         ]);
     }
 }

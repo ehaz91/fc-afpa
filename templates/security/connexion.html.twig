@@ -9,7 +9,7 @@
        
 {% block body %}
 
-            <body>
+        <body>
     
 			<div class="inner">
 				<div class="image-holder">
@@ -32,9 +32,11 @@
                          <div>
                             <a  href="{{ path('app_forgotten_password') }}">Mot de passe oublié ?</a>
                         </div>
-                    </form>   
-                       
+                        <div>
+                            <a  href="{{ path('inscription') }}">Pas encore inscrit ?</a>
+                        </div>
+                    </form>                         
 			</div>
-	
+            	
         </body>
         {% endblock %}
